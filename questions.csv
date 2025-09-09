@@ -1,0 +1,3 @@
+The api requests should have auth token generated based on the user and that user Id should also be displayed in the response to know which user has which cards. The auth - Bearer token can be generated using the user's user name/email and password.
+The API tests can be validated if the user is a dealer and we try to distribute the cards for playing the request shouldn't go. The response should be 403- forbidden
+The API tests can be validated if the player is shuffling the cards and it should throw 403 when attempting to shuffle the cards.

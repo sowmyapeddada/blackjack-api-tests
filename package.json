@@ -1,0 +1,22 @@
+{
+  "name": "blackjack-api-tests",
+  "version": "1.0.0",
+  "description": "Playwright and Jest tests for Blackjack API",
+  "scripts": {
+    "test": "playwright test",
+    "test:dev": "ENV=dev playwright test",
+    "test:prod": "ENV=prod playwright test",
+    "test:journey:dev": "ENV=dev playwright test tests/journey-tests.spec.js",
+    "test:journey:prod": "ENV=prod playwright test tests/journey-tests.spec.js",
+    "test:contract:dev": "ENV=dev playwright test tests/contract-tests.spec.js",
+    "test:contract:prod": "ENV=prod playwright test tests/contract-tests.spec.js"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.48.0",
+    "dotenv": "^16.4.5",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

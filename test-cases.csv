@@ -1,0 +1,10 @@
+Test ID,Collection,Test Name,Description,Endpoint,Method,Expected Status,Assertions,Environment
+J1,Journey,Create New Deck,Creates a new deck of cards,/api/deck/new/,POST,200 or 201,"success=true, deck_id not null, remaining=52, shuffled=false, response time < 200ms","Works in dev and prod; no auth required"
+J2,Journey,Shuffle Deck,Shuffles the deck with 6 decks,/api/deck/{deckId}/shuffle?deck_count=6,GET,200,"success=true, deck_id matches, remaining=52, shuffled=true, response time < 200ms","Requires deckId from J1; works in dev and prod"
+J3,Journey,Draw 3 Cards for Player 1,Draws 3 cards for Player 1,/api/deck/{deckId}/draw/?count=3,GET,200,"success=true, deck_id matches, cards array length=3, remaining=49, response time < 200ms, Blackjack score calculated","Requires deckId from J1 and auth token in prod; dev uses public API"
+J4,Journey,Draw 3 Cards for Player 2,Draws 3 cards for Player 2,/api/deck/{deckId}/draw/?count=3,GET,200,"success=true, deck_id matches, cards array length=3, remaining=46, response time < 200ms, Blackjack score calculated","Requires deckId from J1 and auth token in prod; dev uses public API"
+C1,Contract,Deck + Draw 2 Cards - 200,Draws 2 cards from a new deck,/api/deck/new/draw/?count=2,GET,200,"success=true, cards array length=2, deck_id not null, remaining=50","Works in dev and prod; no auth required"
+C2,Contract,Deck ID Not Found - 404,Tries to draw from invalid deck ID,/api/deck/djcjdvvdvvd/draw/?count=2,GET,404,"Status code=404","Works in dev and prod; no auth required"
+C3,Contract,Invalid Resource Name - 404,Uses incorrect resource name,/api/decks/new/draw/?count=2,GET,404,"Status code=404","Works in dev and prod; no auth required"
+C4,Contract,Count More Than Cards Available,Tries to draw 98 cards,/api/deck/new/draw/?count=98,GET,200,"success=true, cards array length <= 52","Works in dev and prod; no auth required"
+C5,Contract,Invalid Host,Uses incorrect host,https://deckofcardapi.com/api/deck/new/draw/?count=2,GET,400+,"Status code >= 400","Works in dev and prod; no auth required"
