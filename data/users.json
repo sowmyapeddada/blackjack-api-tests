@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": "player1",
+      "email": "player1@test.com"
+    },
+    {
+      "id": "player2",
+      "email": "player2@test.com"
+    },
+     {
+      "id": "dealer",
+      "email": "dealer@test.com"
+    }
+  ]
+}
